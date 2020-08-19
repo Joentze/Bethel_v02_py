@@ -1,0 +1,6 @@
+news
+article
+articles
+press
+reports
+report
