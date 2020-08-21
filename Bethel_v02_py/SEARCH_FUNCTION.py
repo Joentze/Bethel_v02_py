@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 import SPEECH as sp
 
 #API KEY FOR WOLFRAM ALPHA SEARCH
-API_key = "JK3YYP-LPYQXL27Q6"
+API_key = ""
 #URL FOR WOLFRAM ALPHA SEARCH 
 URL_WA = "http://api.wolframalpha.com/v1/result?appid=" + API_key + "&i="
 
