@@ -1,4 +1,3 @@
-
 #HTTP REQUEST LIBRARY
 import requests as req
 
@@ -12,7 +11,7 @@ import xml.etree.ElementTree as ET
 import SPEECH as sp
 
 #API KEY FOR WOLFRAM ALPHA SEARCH
-API_key = ""
+API_key = "JK3YYP-LPYQXL27Q6"
 #URL FOR WOLFRAM ALPHA SEARCH 
 URL_WA = "http://api.wolframalpha.com/v1/result?appid=" + API_key + "&i="
 
@@ -44,8 +43,6 @@ def search_suggestions(ambiguous_noun):
     # IF THERE IS ENOUGH SIGNIFICANCE TO WHAT IS BEING SEARCHED A WIKI SEARCH WILL THEN BE CONDUCTED
     if suggestions:
         
-        
-
         return_string = str(suggestions.group(1))
         
         print("alternative: " + return_string)
@@ -83,11 +80,11 @@ def search_suggestions(ambiguous_noun):
 
 def basic_Wikipedia_search(inputString,nounToBeSearched):
     print("searching")
-    splitNoun = nounToBeSearched.split(' ')
+    
     
     capitalised = []
 
-    for currWord in splitNoun:
+    for currWord in nounToBeSearched:
         capitalised.append(currWord.capitalize())
 
     curated_noun = '%20'.join(capitalised)
@@ -96,11 +93,11 @@ def basic_Wikipedia_search(inputString,nounToBeSearched):
     return_title = ""
 
     wikiGet = req.get(wikiString + curated_noun).text
-  
+    
     extract = regex.search('"extract":"(.*)"', wikiGet)
     title = regex.search('"title":"(.*)"', wikiGet)
     
-    false_positive_str = '{} may refer to:"'.format(nounToBeSearched.capitalize())
+    false_positive_str = '{} may refer to:"'.format(' '.join(nounToBeSearched))
     false_positive_boolean = regex.search(false_positive_str, wikiGet)
 
     
@@ -117,13 +114,13 @@ def basic_Wikipedia_search(inputString,nounToBeSearched):
                 
             except AttributeError: 
                 print("trying an alternative")
-                return_extract, return_title = search_suggestions(nounToBeSearched)
+                return_extract, return_title = search_suggestions(' '.join(nounToBeSearched))
                 #print(google_suggested)
         else:
             try:
                 
                 return_extract = wolfram_alpha_search(inputString)
-                return_title = suggest(nounToBeSearched)
+                return_title = suggest(' '.join(nounToBeSearched))
                 
             except RuntimeError:
                 print("nothing on this topic")

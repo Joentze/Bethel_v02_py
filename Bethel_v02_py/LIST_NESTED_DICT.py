@@ -30,8 +30,10 @@ def list_assign(fileName):
                 startsWith = cap_currLn[0]
 
                 letter_list.setdefault(startsWith,[]).append(strip_currLn.capitalize())
-
+    #print(letter_list)
     return letter_list
+
+
 
 def func_reference(fileName):
     
@@ -66,12 +68,12 @@ def input_tokenCombi(inputString, alpha_index, reference_no):
         else:
             nounToBeSearched.append(currWd)
     joint_combi = '/'.join(return_tokenIndex)
+    
     return joint_combi, nounToBeSearched
-
 
 """
 alpha_index = list_assign("wordBanks")
-print(alpha_index)
+print(alpha_index)   
 reference_no = func_reference("wordBanks")
 print(reference_no)
 

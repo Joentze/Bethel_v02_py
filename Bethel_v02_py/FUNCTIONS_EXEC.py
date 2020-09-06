@@ -14,7 +14,7 @@ import WA_SEARCH as WA
 import SPEECH as sp
 
 #IMPORTS GMAPS MODULE
-import MAPS as maps
+import Gmaps as maps
 
 #IMPORTS BEST_MATCHED 
 #import BEST_MATCHED as BM_mod
@@ -27,28 +27,28 @@ def dictFunc(directory, txtsInFile):
     return_dict = {}
     list_of_functions = []
 
- 
-    #READS THE DIRECTORY OF THE COMBINATION FILE
-    for currTxt in txtsInFile:
-        iterateLines = xr.txtToArray(directory + '/' + currTxt )        
-        #FOR EVERY LINE THERE IS A NEW COMBINATION, THE FOR LOOP ITERATES THROUGH THEM TO RETURN THE COMBI NUMBER AND THE NAME
-        for currLn in iterateLines:
-            currLineName = currLn.split(':')
-            keyName = currLineName[0]
-            
-            nameOfFunc = keyName.split('_')
-            valName = nameOfFunc[1]
 
-            if valName not in list_of_functions:
-                list_of_functions.append(valName)
+    iterateLines = xr.txtToArray(directory + '/' )      
+    #print(iterateLines)  
+    #FOR EVERY LINE THERE IS A NEW COMBINATION, THE FOR LOOP ITERATES THROUGH THEM TO RETURN THE COMBI NUMBER AND THE NAME
+    for currLn in iterateLines:
+        currLineName = currLn.split(':')
+        keyName = currLineName[0]
             
-            return_dict[keyName] = valName
+        nameOfFunc = keyName.split('_')
+        valName = nameOfFunc[1]
+
+        if valName not in list_of_functions:
+            list_of_functions.append(valName)
+            
+        return_dict[keyName] = valName
         
-        return return_dict, list_of_functions
-        
+    return return_dict, list_of_functions
+"""   
 dict_num, list_func = dictFunc(nameFile, txtsInFile)
-print(list_func)
 
+print(dict_num)
+"""
 
 
 
