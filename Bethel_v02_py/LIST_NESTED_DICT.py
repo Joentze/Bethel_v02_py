@@ -20,7 +20,7 @@ def list_assign(fileName):
     
     #print(list_of_txt)
     for current_txt in list_of_txt:
-        if current_txt.endswith( ".txt" ):
+        if file_dir.path.splitext(current_txt)[-1] == "txt" :
             all_lines = open(fileName + '/' +current_txt, "r")
             for currLn in all_lines:
                 

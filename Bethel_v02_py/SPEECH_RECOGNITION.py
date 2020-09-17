@@ -1,24 +1,9 @@
-#!/usr/bin/env python
-
-#IMPORTS SPEECH RECOGNITION LIBRARY
-import speech_recognition as sr
-
-#import SPEECH as sp 
-import SPEECH as sp
-
-#IMPORTS BEST MATCHED MODULE
-import BEST_MATCHED as Bm
-
-#IMPORTS LISTED_NEST_DICT MODULE
-import LIST_NESTED_DICT as dictList
-
-#IMPORTS FUCNTION_EXEC MODULE
-import FUNCTIONS_EXEC as func_exec
-
-#IMPORTS OS MODULE
 import os
-
-#IMPORTS ARRAY_TEST
+import speech_recognition as sr
+import SPEECH as sp
+import BEST_MATCHED as Bm
+import LIST_NESTED_DICT as dictList
+import FUNCTIONS_EXEC as func_exec
 import ARRAY_TEST as xr
 
 
@@ -32,7 +17,7 @@ orglist = dictList.list_assign('wordbanks')
 #print(orglist)
 func_ref = dictList.func_reference('wordBanks')
 #print(func_ref)
-txt_combiFunc = os.listdir("combinationFunctions" + "/")
+txt_combiFunc = os.listdir("combinationFunctions/")
 #print(txt_combiFunc)
 listOfCombiArray = xr.txtToArray("combinationFunctions/")
 
@@ -40,7 +25,7 @@ integerAssign = xr.intAssignment("combinationFunctions/")
 
 def inputString():
     boolean_state = False
-    while boolean_state == False:
+    while not boolean_state:
         
         with mic as source:
             print('speak anything')
@@ -82,5 +67,5 @@ def inputString():
         except:
             print("can't hear anything")
         
-    
-inputString()
+if __name__ == "__main__":
+    inputString()
